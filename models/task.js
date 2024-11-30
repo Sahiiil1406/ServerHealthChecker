@@ -17,6 +17,10 @@ const TaskSchema=new mongoose.Schema({
     },
     url:{
         type:String
+    },
+    lastAlive:{
+        type:Date,
+        default:Date.now()
     }
 },{timestamps:true})
 

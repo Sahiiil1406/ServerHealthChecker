@@ -9,7 +9,7 @@ const {createTask,
 
 router.post('/create',auth, createTask);
 router.delete('/delete/:id',auth, deleteTask);
-router.get('/health/:id',auth, checkHealth);
+//router.get('/health/:id',auth, checkHealth);
 router.get('/mytask',auth, getMyTask);
 
 

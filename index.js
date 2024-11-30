@@ -6,6 +6,9 @@ const cookieParser=require('cookie-parser');
 const userRoutes=require('./routes/user.routes');
 const taskRoutes=require('./routes/task.routes');
 
+//cron
+const {healthCheckCron,dummyCron}=require('./cron');
+
 
 const app=express();
 //middleware
@@ -21,7 +24,7 @@ app.use('/task',taskRoutes);
 const connectDb=async ()=>{
     try {
         const url=process.env.MONGO_URL || 'mongodb://localhost:27017/healthchecker';
-        await mongoose.connect(url);
+        await mongoose.connect('mongodb+srv://sahil:sahil@test.wibjbi6.mongodb.net/');
         console.log('Connected to database');
     } catch (error) {
         console.log('Error connecting to database',error.message);
@@ -30,5 +33,7 @@ const connectDb=async ()=>{
 const PORT=process.env.PORT || 3000;
 app.listen(PORT,async()=>{
     await connectDb();
+    healthCheckCron();
+    //dummyCron();
     console.log('Server is running on port 3000');
 });
