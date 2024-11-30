@@ -24,7 +24,7 @@ app.use('/task',taskRoutes);
 const connectDb=async ()=>{
     try {
         const url=process.env.MONGO_URL || 'mongodb://localhost:27017/healthchecker';
-        await mongoose.connect('mongodb+srv://sahil:sahil@test.wibjbi6.mongodb.net/');
+        await mongoose.connect(url);
         console.log('Connected to database');
     } catch (error) {
         console.log('Error connecting to database',error.message);
